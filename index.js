@@ -10,10 +10,10 @@ var app = express();
 app.set('view engine', 'pug');
 app.set('views','./views');
 
-app.use(express.json()) // for parsing application/json
-app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 app.get('/', function(req,res) {
 	res.render('index',{
@@ -21,7 +21,11 @@ app.get('/', function(req,res) {
 	});
 });
 
-app.use('/users',userRoute);
+app.post('/users/create', (req, res) => {
+	console.log(req.body);
+})
+
+app.use('/users', userRoute);
 
 app.listen(port,function() {
 	console.log('Server listening on port ' + port)
