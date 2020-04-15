@@ -21,10 +21,6 @@ app.get('/', function(req,res) {
 	});
 });
 
-app.post('/users/create', (req, res) => {
-	console.log(req.body);
-})
-
 app.use('/users', userRoute);
 
 app.listen(port,function() {
