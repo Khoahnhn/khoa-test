@@ -31,7 +31,6 @@ module.exports.get = function(req,res) {
 
 module.exports.postCreate = function(req,res) { //endpoint de tra loi req
 //	users.push(req.body);               //endpoint nay nhan req co method la POST
-  console.log(req.body);
   req.body.id = shortid.generate();
 	var errors = [];
 	if(!req.body.name) {
@@ -40,7 +39,6 @@ module.exports.postCreate = function(req,res) { //endpoint de tra loi req
 	if(!req.body.phone) {
 		errors.push('Phone is required.');
 	}
-
 	if(errors.length) {
 		res.render('users/create', {
 			errors: errors,
